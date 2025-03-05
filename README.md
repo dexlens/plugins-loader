@@ -67,7 +67,7 @@ export default class CoreLoggerPlugin implements Plugin {
     }
 
     async register(options?: Record<string, any>): Promise<void> {
-        console.log('Registering Pino logger with options:', {
+        console.log('Registering logger with options:', {
             ...this.state,
             ...options
         });
