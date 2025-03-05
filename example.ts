@@ -1,37 +1,7 @@
-# plugins-loader
-It provides a robust mechanism for dynamically loading, registering, and managing plugins in an Dexlens Applications.
-
-## Interfaces
-* `PluginConfig`: Configuration for a plugin
-* `Plugin`: Standard plugin structure
-* `PluginLoaderConfig`: Configuration for the loader
-
-## Constructor
-* `constructor(config: PluginLoaderConfig)`: Creates a new PluginLoader instance
-
-## Methods
-* `loadPlugins()`: Load all configured plugins
-* `loadPlugin(pluginConfig)`: Load a single plugin
-* `unloadPlugin(pluginName)`: Unload a specific plugin
-* `unloadPlugins()`: Unload all plugins
-* `getPlugin(pluginName)`: Retrieve a specific plugin
-* `listPlugins()`: List all loaded plugins
-
-## Events
-* `plugin:loaded`: Triggered when a plugin is successfully loaded
-* `plugin:error`: Triggered when a plugin fails to load
-
-## Key Properties
-* `loadedPlugins`: Internal map storing loaded plugins
-* `pluginConfigs`: Array of plugin configurations
-
-## Use it 
-```typescript
-import PluginLoader, { Plugin, PluginLoaderConfig } from "jsr:dexlens/plugin-loader";
+import PluginLoader, { Plugin, PluginLoaderConfig } from "./main.ts";
 
 const coreConfig: PluginLoaderConfig = {
   plugins: [
-    // can be node module, path, or jsr
     { package: "@dexlens/logger", options: { level: "info" } },
   ],
 };
@@ -61,13 +31,13 @@ export default class CoreLoggerPlugin implements Plugin {
     state: Record<string, any>;
 
     constructor(){
-        this.name = 'core-logger-pino';
+        this.name = '@dexlens/logger';
         this.version = '1.0.0';
         this.state = {}
     }
 
     async register(options?: Record<string, any>): Promise<void> {
-        console.log('Registering Pino logger with options:', {
+        console.log('Registering logger with options:', {
             ...this.state,
             ...options
         });
@@ -85,4 +55,4 @@ export default class CoreLoggerPlugin implements Plugin {
         console.log(this.state);
     }
 }
-```
+
