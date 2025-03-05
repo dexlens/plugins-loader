@@ -61,7 +61,7 @@ export default class CoreLoggerPlugin implements Plugin {
     state: Record<string, any>;
 
     constructor(){
-        this.name = 'core-logger-pino';
+        this.name = '@dexlens/logger';
         this.version = '1.0.0';
         this.state = {}
     }
