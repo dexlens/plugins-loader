@@ -1,4 +1,4 @@
-# plugins-loader
+# Plugins Loader
 It provides a robust mechanism for dynamically loading, registering, and managing plugins in an Dexlens Applications.
 
 ## Interfaces
